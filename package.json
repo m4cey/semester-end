@@ -4,10 +4,12 @@
     "del": "^7.1.0",
     "gulp": "^4.0.2",
     "gulp-beautify": "^3.0.0",
-    "gulp-nunjucks-render": "^2.2.3"
+    "gulp-nunjucks-render": "^2.2.3",
+    "live-server": "^1.2.2"
   },
   "scripts": {
-    "start": "gulp & bunx http-server -c-1 -o ./dist/",
+    "serve": "npx live-server --mount=/:dist/ --watch=dist/",
+    "start": "gulp & npm run serve",
     "build": "gulp build"
   }
 }

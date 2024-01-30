@@ -1,3 +1,10 @@
 <header>
-	Header
+  Header
+  <ul>
+    {% for page in pages %}
+    <li>
+      <a href="{{ page }}.html"> {{ 'home' if page == 'index' else page }} </a>
+    </li>
+    {% endfor %}
+  </ul>
 </header>
