@@ -1,10 +1,11 @@
 ## how to:
 ```
 git clone https://github.com/m4cey/semester-end/
+cd semester-end/
 ```
 
 ```shell
-npm i
+npm install
 npm start
 ```
 
