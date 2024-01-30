@@ -9,9 +9,8 @@
     "merge-stream": "^2.0.0"
   },
   "scripts": {
-    "serve": "npx live-server --wait=1000 --mount=/:dist/ --watch=dist/",
-    "dev": "gulp & npm run serve",
-    "start": "gulp build && npm run serve",
+    "start": "gulp build && npx live-server --mount=/:dist/ --watch=dist/",
+    "dev": "npm run start & gulp",
     "build": "gulp build"
   }
 }

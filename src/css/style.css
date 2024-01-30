@@ -1,10 +1,87 @@
+:root {
+  --fg: #ffb641;
+  --bg: #000000;
+}
+
+@font-face {
+  font-family: Monofonto;
+  src: url("../monofonto.ttf");
+}
+* {
+  font-family: Monofonto, monospace;
+}
+/* common */
 body {
-	background: #333;
-	color: #eee;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 18pt;
 }
-a {
-	color: orangered;
+label,
+button {
+  user-select: none;
 }
-a:visited {
-	color: orange;
+
+/* index */
+.home-page {
+  padding-inline: 2em;
+}
+button {
+  background: none;
+  color: var(--fg);
+  border: none;
+  margin: 0;
+  padding: 0.5em;
+  cursor: pointer;
+  font-size: 1em;
+  outline: 1px solid var(--fg);
+}
+button:hover {
+  color: var(--bg);
+  background: var(--fg);
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+li {
+  padding: 0.2em;
+  width: fit-content;
+}
+li:hover {
+  outline: 1px solid var(--fg);
+}
+.checkbox {
+  display: none;
+}
+.checkbox + label:after {
+  content: "/Non Valide";
+}
+li:has(> .checkbox:checked) {
+  color: var(--bg);
+  background: var(--fg);
+}
+.checkbox:checked + label:after {
+  content: "/Valide!";
+}
+/* display */
+.display-page {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-items: center;
+  padding-inline: 1em;
+}
+video {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  outline: 1px solid var(--fg);
+}
+
+@media (min-aspect-ratio: 2) {
+  video {
+    height: 100%;
+    width: auto;
+  }
 }

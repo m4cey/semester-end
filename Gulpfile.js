@@ -25,20 +25,17 @@ function html() {
 		.pipe(dest("dist"))
 }
 
-// function assets() {
-// 	return src("assets/*").pipe(dest("dist/assets"));
-//
-// }
-
 function assets() {
 	return merge([
 		src("assets/*").pipe(dest("dist/assets")),
 		src("src/css/*").pipe(dest("dist/css")),
+		src("*.ttf").pipe(dest("dist")),
+		src("favicon.ico").pipe(dest("dist")),
 	]);
 }
 
 function watchFiles() {
-	watch("src/**/*", html);
+	watch("src/**/*", assets, html);
 }
 
 export default series(clean, html, assets, watchFiles);

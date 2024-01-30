@@ -4,10 +4,52 @@ vim: filetype=html
 
 {% extends "layouts/layout.html" %}
 {% block content %}
-<div class="page">
-  <h1>Home</h1>
-  <a href="/form.html">
-    <b>Begin</b>
-  </a>
+
+{% set slides = [ "Programmation 1", "Systèmes D'exploitations 1", "Statistiques
+et Probabilites", "Electromagnetisme", "Algorithmes 2", "Technologies du Web" ]
+%}
+
+<div class="home-page">
+  <form id="form">
+    <h1>Modules</h1>
+    <p>Selectionner votre modules valide:</p>
+    <br>
+    <ul>
+      {% for slide in slides %}
+      <li>
+        <input
+          type="checkbox"
+          id="{{loop.index}}"
+          name="{{loop.index}}"
+          class="checkbox"
+        />
+        <label for="{{loop.index}}">Module de {{slide}}</label>
+      </li>
+      <br />
+      {% endfor %}
+      <button type="submit" id="submit">Suivant</button>
+    </ul>
+  </form>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const form = document.querySelector("#form");
+
+  function process_data() {
+    const form_data = new FormData(form);
+    let form_result = "FFFFFF".split('');
+    for (const form_slide of form_data.keys()) {
+      form_result[form_slide - 1] = "S";
+    }
+    localStorage.setItem("form_result", form_result.join(''));
+    window.location = "/display.html";
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    process_data();
+  });
+</script>
 {% endblock %}

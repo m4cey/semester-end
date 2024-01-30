@@ -12,11 +12,9 @@ vim: filetype=html
 		<link rel="icon" href="./favicon.ico" type="image/x-icon" />
 	</head>
 	<body>
-		{% include "partials/header.html" %}
 		<div class="content">
 			{% block content %}{% endblock %}
 		</div>
-		{% include "partials/footer.html" %}
 		{% block scripts %}{% endblock %}
 	</body>
 </html>
