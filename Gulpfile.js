@@ -22,13 +22,16 @@ function html() {
 		)
 		.pipe(beautify.html({ indent_size: 4, preserve_newlines: false }))
 		.pipe(src("favicon.ico"))
-		.pipe(src("assets/"))
 		.pipe(dest("dist"));
+}
+
+function assets() {
+	return src("assets/*").pipe(dest("dist/assets"));
 }
 
 function watchFiles() {
 	watch("src/**/*", html);
 }
 
-export default series(clean, html, watchFiles);
-export const build = series(clean, html);
+export default series(clean, html, assets, watchFiles);
+export const build = series(clean, html, assets);

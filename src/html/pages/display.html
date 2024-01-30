@@ -1,17 +1,29 @@
 {#
 vim: filetype=html
 #}
+
 {% extends "layouts/layout.html" %}
+
 {% block content %}
 <div class="page">
-  <h1>Display</h1>
-  <div id="result">
-  </div>
+	<h1>Display</h1>
+	<video id="display" width="100%" controls>
+		Your browser does not support the video tag
+	</video>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-	document.getElementById("result").innerHTML = localStorage.getItem("form_result");
+	const form_result = localStorage.getItem("form_result");
+	const display = document.getElementById("display");
+
+	const source = document.createElement('source');
+	source.setAttribute('src', `/assets/${form_result}.mp4`);
+	source.setAttribute('type', 'video/mp4');
+
+	window.addEventListener("load", (event) => {
+		display.appendChild(source);
+	});
 </script>
 {% endblock %}
