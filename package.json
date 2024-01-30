@@ -5,7 +5,8 @@
     "gulp": "^4.0.2",
     "gulp-beautify": "^3.0.0",
     "gulp-nunjucks-render": "^2.2.3",
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "merge-stream": "^2.0.0"
   },
   "scripts": {
     "serve": "npx live-server --wait=1000 --mount=/:dist/ --watch=dist/",

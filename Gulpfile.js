@@ -1,5 +1,6 @@
 import gulp from "gulp";
-const { src, dest, series, watch } = gulp;
+const { task, src, dest, series, watch } = gulp;
+import merge from "merge-stream";
 import { deleteAsync as del } from "del";
 import njk from "gulp-nunjucks-render";
 import beautify from "gulp-beautify";
@@ -21,12 +22,19 @@ function html() {
 			}),
 		)
 		.pipe(beautify.html({ indent_size: 4, preserve_newlines: false }))
-		.pipe(src("favicon.ico"))
-		.pipe(dest("dist"));
+		.pipe(dest("dist"))
 }
 
+// function assets() {
+// 	return src("assets/*").pipe(dest("dist/assets"));
+//
+// }
+
 function assets() {
-	return src("assets/*").pipe(dest("dist/assets"));
+	return merge([
+		src("assets/*").pipe(dest("dist/assets")),
+		src("src/css/*").pipe(dest("dist/css")),
+	]);
 }
 
 function watchFiles() {
