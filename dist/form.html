@@ -5,27 +5,80 @@
     <title>End Of Semester</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="src/css/style.css" rel="stylesheet" />
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
     <header> Header <ul>
             <li>
-                <a href="index.html"> home </a>
+                <a href="index.html"> Home </a>
             </li>
             <li>
-                <a href="form.html"> form </a>
+                <a href="form.html"> Form </a>
             </li>
         </ul>
     </header>
-    <div class="main">
-        <div id="content">
-            <div class="container">
-            </div>
+    <br>
+    <div class="content">
+        <div class="page">
+            <form id="form">
+                <h1>Form</h1>
+                <ul>
+                    <li>
+                        <label for="1">Programmation 1</label>
+                        <input type="checkbox" id="1" name="1" value="" />
+                    </li>
+                    <br />
+                    <li>
+                        <label for="2">Systèmes D&#39;exploitations 1</label>
+                        <input type="checkbox" id="2" name="2" value="" />
+                    </li>
+                    <br />
+                    <li>
+                        <label for="3">Statistiques et Probabilites</label>
+                        <input type="checkbox" id="3" name="3" value="" />
+                    </li>
+                    <br />
+                    <li>
+                        <label for="4">Electromagnetisme</label>
+                        <input type="checkbox" id="4" name="4" value="" />
+                    </li>
+                    <br />
+                    <li>
+                        <label for="5">Algorithmes 2</label>
+                        <input type="checkbox" id="5" name="5" value="" />
+                    </li>
+                    <br />
+                    <li>
+                        <label for="6">Technologies du Web</label>
+                        <input type="checkbox" id="6" name="6" value="" />
+                    </li>
+                    <br />
+                    <button type="submit" id="submit" name="slide-submit">Submit</button>
+                </ul>
+            </form>
         </div>
     </div>
+    <br>
     <footer> Footer </footer>
+    <script>
+        const form = document.querySelector("#form");
+
+        function process_data() {
+            const form_data = new FormData(form);
+            let form_result = "FFFFFF".split('');
+            for (const form_slide of form_data.keys()) {
+                form_result[form_slide - 1] = "S";
+            }
+            localStorage.setItem("form_result", form_result.join(''));
+            window.location = "/display.html";
+        }
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            process_data();
+        });
+    </script>
 </body>
 
 </html>

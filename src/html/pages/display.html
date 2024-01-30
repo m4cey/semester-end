@@ -1,0 +1,17 @@
+{#
+vim: filetype=html
+#}
+{% extends "layouts/layout.html" %}
+{% block content %}
+<div class="page">
+  <h1>Display</h1>
+  <div id="result">
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+	document.getElementById("result").innerHTML = localStorage.getItem("form_result");
+</script>
+{% endblock %}

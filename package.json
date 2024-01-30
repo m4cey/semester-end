@@ -8,8 +8,9 @@
     "live-server": "^1.2.2"
   },
   "scripts": {
-    "serve": "npx live-server --mount=/:dist/ --watch=dist/",
-    "start": "gulp & npm run serve",
+    "serve": "npx live-server --wait=1000 --mount=/:dist/ --watch=dist/",
+    "dev": "gulp & npm run serve",
+    "start": "gulp build && npm run serve",
     "build": "gulp build"
   }
 }

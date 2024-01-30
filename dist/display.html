@@ -22,14 +22,16 @@
     <br>
     <div class="content">
         <div class="page">
-            <h1>Home</h1>
-            <a href="/form.html">
-                <b>Begin</b>
-            </a>
+            <h1>Display</h1>
+            <div id="result">
+            </div>
         </div>
     </div>
     <br>
     <footer> Footer </footer>
+    <script>
+        document.getElementById("result").innerHTML = localStorage.getItem("form_result");
+    </script>
 </body>
 
 </html>

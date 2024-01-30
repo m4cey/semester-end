@@ -1,10 +1,15 @@
+{#
+vim: filetype=html
+#}
+
 <header>
   Header
   <ul>
-    {% for page in pages %}
+    {% for page in ["index", "form"] %}
     <li>
-      <a href="{{ page }}.html"> {{ 'home' if page == 'index' else page }} </a>
+      <a href="{{ page }}.html"> {{ 'Home' if page == 'index' else page | title }} </a>
     </li>
     {% endfor %}
   </ul>
 </header>
+<br>

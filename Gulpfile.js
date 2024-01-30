@@ -5,7 +5,7 @@ import njk from "gulp-nunjucks-render";
 import beautify from "gulp-beautify";
 
 var env_hook = function (env) {
-	env.addGlobal("pages", ["index", "form"]);
+	// env.addGlobal("pages", ["index", "form", "display"]);
 };
 
 function clean() {
@@ -21,16 +21,13 @@ function html() {
 			}),
 		)
 		.pipe(beautify.html({ indent_size: 4, preserve_newlines: false }))
+		.pipe(src("favicon.ico"))
 		.pipe(dest("dist"));
 }
 
 function watchFiles() {
-	watch("src/html/**/*", html);
+	watch("src/**/*", html);
 }
 
-function copy() {
-	return src("favicon.ico").pipe(dest("dist"));
-}
-
-export default series(clean, copy, html, watchFiles);
-export const build = series(clean, copy, html);
+export default series(clean, html, watchFiles);
+export const build = series(clean, html);
