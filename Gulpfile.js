@@ -9,7 +9,7 @@ var env_hook = function (env) {
 };
 
 function clean() {
-	return del(["dist"]);
+	return del(["dist/**", "!dist/assets", "!dist/assets/*"]);
 }
 
 function html() {
@@ -22,6 +22,7 @@ function html() {
 		)
 		.pipe(beautify.html({ indent_size: 4, preserve_newlines: false }))
 		.pipe(src("favicon.ico"))
+		.pipe(src("assets/"))
 		.pipe(dest("dist"));
 }
 
