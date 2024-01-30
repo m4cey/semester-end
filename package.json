@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "del": "^7.1.0",
+    "gulp": "^4.0.2",
+    "gulp-beautify": "^3.0.0",
+    "gulp-nunjucks-render": "^2.2.3"
+  },
+  "scripts": {
+    "start": "gulp & bunx http-server -c-1 -o ./dist/",
+    "build": "gulp build"
+  }
+}
