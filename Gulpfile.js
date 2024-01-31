@@ -5,8 +5,6 @@ import njk from "gulp-nunjucks-render";
 import { deleteAsync as del } from "del";
 import beautify from "gulp-beautify";
 
-import package_json from "./package.json" assert {type: 'json'};
-
 function clean() {
 	return del(["dist/**", "!dist/assets", "!dist/assets/*"]);
 }
@@ -16,9 +14,6 @@ function html() {
 		.pipe(
 			njk({
 				path: ["src/html"],
-				data: {
-					mount_path: package_json.config.mount_path,
-				}
 			}),
 		)
 		.pipe(beautify.html({ indent_size: 4, preserve_newlines: false }))

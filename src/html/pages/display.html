@@ -18,7 +18,7 @@ vim: filetype=html
 	const display = document.getElementById("display");
 
 	const source = document.createElement('source');
-	source.setAttribute('src', `{{ mount_path }}/assets/${form_result}.mp4`);
+	source.setAttribute('src', `assets/${form_result}.mp4`);
 	source.setAttribute('type', 'video/mp4');
 
 	window.addEventListener("load", (event) => {
