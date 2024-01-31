@@ -73,7 +73,8 @@ li:has(> .checkbox:checked) {
   padding-inline: 1em;
 }
 video {
-  width: 100%;
+  --size: 80%;
+  width: var(--size);
   height: auto;
   margin: auto;
   outline: 1px solid var(--fg);
@@ -81,7 +82,7 @@ video {
 
 @media (min-aspect-ratio: 2) {
   video {
-    height: 100%;
+    height: var(--size);
     width: auto;
   }
 }
