@@ -12,5 +12,8 @@
     "start": "gulp build && npx live-server --mount=/:dist/ --watch=dist/",
     "dev": "npm run start & gulp",
     "build": "gulp build"
+  },
+  "config": {
+    "mount_path": ""
   }
 }

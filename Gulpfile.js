@@ -1,13 +1,11 @@
 import gulp from "gulp";
 const { task, src, dest, series, watch } = gulp;
 import merge from "merge-stream";
-import { deleteAsync as del } from "del";
 import njk from "gulp-nunjucks-render";
+import { deleteAsync as del } from "del";
 import beautify from "gulp-beautify";
 
-var env_hook = function (env) {
-	// env.addGlobal("pages", ["index", "form", "display"]);
-};
+import package_json from "./package.json" assert {type: 'json'};
 
 function clean() {
 	return del(["dist/**", "!dist/assets", "!dist/assets/*"]);
@@ -18,7 +16,9 @@ function html() {
 		.pipe(
 			njk({
 				path: ["src/html"],
-				manageEnv: env_hook,
+				data: {
+					mount_path: package_json.config.mount_path,
+				}
 			}),
 		)
 		.pipe(beautify.html({ indent_size: 4, preserve_newlines: false }))
