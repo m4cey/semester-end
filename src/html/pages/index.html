@@ -44,7 +44,7 @@ et Probabilites", "Electromagnetisme", "Algorithmes 2", "Technologies du Web" ]
       form_result[form_slide - 1] = "S";
     }
     localStorage.setItem("form_result", form_result.join(''));
-    window.location = "/display.html";
+    window.location = "{{ mount_path }}/display.html";
   }
 
   form.addEventListener("submit", (event) => {
